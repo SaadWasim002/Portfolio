@@ -1,5 +1,5 @@
 
-import { React, Node, Javascript, Mongodb } from "lucide-react";
+import { Code, Database, BookOpen, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,9 +20,9 @@ const Projects = () => {
       image: "/placeholder.svg",
       link: "https://github.com/yourusername/discourse",
       stack: [
-        { name: "React", icon: React },
-        { name: "Prisma", icon: Node },
-        { name: "Tailwind", icon: React }
+        { name: "React", icon: Code },
+        { name: "Prisma", icon: Database },
+        { name: "Tailwind", icon: Code }
       ]
     },
     {
@@ -31,7 +31,7 @@ const Projects = () => {
       description: "A web-based daily expense tracking system that helps users manage and track their expenditures efficiently. Features automated calculations and per-user expense tracking with detailed insights.",
       image: "/placeholder.svg",
       link: "https://github.com/yourusername/expensesync",
-      stack: [{ name: "PHP", icon: Node }]
+      stack: [{ name: "PHP", icon: Code }]
     },
     {
       id: 3,
@@ -40,9 +40,9 @@ const Projects = () => {
       image: "/placeholder.svg",
       link: "https://github.com/yourusername/doorstep-delight",
       stack: [
-        { name: "Node.js", icon: Node },
-        { name: "JavaScript", icon: Javascript },
-        { name: "MongoDB", icon: Mongodb }
+        { name: "Node.js", icon: Database },
+        { name: "JavaScript", icon: Code },
+        { name: "MongoDB", icon: Database }
       ]
     },
     {
@@ -51,7 +51,7 @@ const Projects = () => {
       description: "A React-based password generator tool that creates secure and customizable passwords.",
       image: "/placeholder.svg",
       link: "https://github.com/yourusername/password-generator",
-      stack: [{ name: "React", icon: React }]
+      stack: [{ name: "React", icon: Code }]
     }
   ];
 
@@ -110,8 +110,9 @@ const Projects = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button variant="default" size="lg" className="animate-fade-in">
+            <Button variant="default" size="lg" className="animate-fade-in flex items-center gap-2">
               View More Projects
+              <ArrowRight className="w-4 h-4" />
             </Button>
           </a>
         </div>
