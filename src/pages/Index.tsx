@@ -17,13 +17,15 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <main className="pt-16">
-        <Hero />
-        <About />
-        <Skills />
-        <Education />
-        <Certifications />
-        <Projects />
-        <Contact />
+        <div className="space-y-32">
+          <div className="animate-fade-in"><Hero /></div>
+          <div className="animate-fade-in delay-100"><About /></div>
+          <div className="animate-fade-in delay-200"><Skills /></div>
+          <div className="animate-fade-in delay-300"><Education /></div>
+          <div className="animate-fade-in delay-400"><Certifications /></div>
+          <div className="animate-fade-in delay-500"><Projects /></div>
+          <div className="animate-fade-in delay-600"><Contact /></div>
+        </div>
       </main>
       <Footer />
     </div>
