@@ -90,7 +90,28 @@ const Hero = () => {
               {[
                 { icon: Github, href: 'https://github.com/SaadWasim002' },
                 { icon: Linkedin, href: 'https://www.linkedin.com/in/saadwasim002/' },
-                { icon: Mail, href: 'mailto:saadwasim444@gmail.com' }
+                { icon: Mail, href: 'mailto:saadwasim444@gmail.com' },
+                {
+                  icon: () => (
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+                      alt="LeetCode"
+                      className="h-5 w-5 object-contain"
+                    />
+                  ),
+                  href: 'https://leetcode.com/saad002'
+                },
+                {
+                  icon: () => (
+                    <img
+                      src="https://www.svgrepo.com/show/305880/codechef.svg"
+                      alt="CodeChef"
+                      className="h-5 w-5 object-contain"
+                    />
+                  ),
+                  href: 'https://www.codechef.com/users/saad002'
+                }
+                
               ].map(({ icon: Icon, href }, index) => (
                 <motion.a
                   key={href}
