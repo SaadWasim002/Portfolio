@@ -61,26 +61,26 @@ const Projects = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-      }
-    }
+      },
+    },
   };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
     <section id="projects" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        <motion.h2
           className="text-3xl font-bold text-center mb-12"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -97,9 +97,13 @@ const Projects = () => {
           viewport={{ once: true, margin: "-50px" }}
         >
           {projects.map((project) => (
-            <motion.div key={project.id} variants={item}>
-              <Card className="group">
-                <motion.div 
+            <motion.div
+              key={project.id}
+              variants={item}
+              className="flex flex-col h-full" // Ensure all cards take equal height
+            >
+              <Card className="group flex flex-col h-full">
+                <motion.div
                   className="h-48 flex items-center justify-center bg-white"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
@@ -110,8 +114,8 @@ const Projects = () => {
                     className="max-h-full w-auto object-contain"
                   />
                 </motion.div>
-                
-                <CardHeader>
+
+                <CardHeader className="flex-grow">
                   <CardTitle className="text-xl font-semibold">
                     {project.title}
                   </CardTitle>
@@ -133,17 +137,22 @@ const Projects = () => {
                     ))}
                   </div>
                 </CardHeader>
-                
-                <CardContent>
+
+                <CardContent className="flex-grow">
                   <CardDescription className="text-sm text-gray-600">
                     {project.description}
                   </CardDescription>
                 </CardContent>
-                
-                <CardFooter>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-full">
-                    <Button 
-                      variant="outline" 
+
+                <CardFooter className="flex-shrink-0">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
+                  >
+                    <Button
+                      variant="outline"
                       className="w-full group-hover:bg-purple-600 group-hover:text-white transition-colors"
                     >
                       View Project
@@ -155,18 +164,14 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="text-center mt-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
           <a href="https://github.com/SaadWasim002" target="_blank" rel="noopener noreferrer">
-            <Button
-              variant="default"
-              size="lg"
-              className="flex items-center gap-2"
-            >
+            <Button variant="default" size="lg" className="flex items-center gap-2">
               View More Projects
               <ArrowRight className="w-4 h-4" />
             </Button>
@@ -178,3 +183,4 @@ const Projects = () => {
 };
 
 export default Projects;
+   
