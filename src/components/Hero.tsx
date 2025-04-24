@@ -124,7 +124,7 @@ const Hero = () => {
               animate="rotate"
             />
             <motion.img
-              src="/prof.jpg"
+              src="/prof.png"
               alt="Saad Wasim"
               className="rounded-full object-cover w-full h-full relative z-10"
               variants={floatingVariants}
