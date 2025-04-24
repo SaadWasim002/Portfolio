@@ -61,7 +61,7 @@ const Hero = () => {
             className="text-4xl md:text-6xl font-bold"
             variants={itemVariants}
           >
-            Hey folks, I'm{' '}
+            Hey folks, I'm{' '}<br/>
             <motion.span
               className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent"
               whileHover={{ scale: 1.05 }}
