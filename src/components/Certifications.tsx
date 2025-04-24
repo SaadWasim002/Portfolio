@@ -8,9 +8,9 @@ const Certifications = () => {
     {
       id: 1,
       title: "CodeFest'25 Prelims — Rank 845",
-      description: "Secured rank 845 in the CodeFest'25 Prelims, demonstrating outstanding problem-solving skills and technical proficiency.",
-      organization: "IICPC",
-      organizationDesc: "Runs CodeFest—India's premier contest on algorithms, data structures & optimization.",
+      description: "Secured an All-India Rank of 845 out of 50,000 participants in CodeFest'25 Prelims, showcasing exceptional problem-solving abilities and strong algorithmic proficiency.",
+      organization: "IICPC (Indian Invitational Competitive Programming Championship)",
+      organizationDesc: "IICPC organizes CodeFest, India’s flagship nationwide programming competition focused on algorithms, data structures, and optimization. It brings together the brightest minds from across the country to solve challenging problems under pressure, fostering innovation, logical thinking, and technical excellence.",
       image: "/iicpc.png"
     },
     {
@@ -18,7 +18,7 @@ const Certifications = () => {
       title: "Competitive Programming – DSA Training",
       description: "Completed 'Competitive Programming – DSA' training, mastering algorithm optimization & complexity analysis.",
       organization: "Coding Spoon",
-      organizationDesc: "Top bootcamp offering DSA masterclasses & mock contests.",
+      organizationDesc: "Coding Spoon is a top-tier coding bootcamp known for its structured DSA masterclasses, regular mock contests, and expert mentorship. It helps students and professionals strengthen their problem-solving skills and prepare for competitive programming, coding interviews, and top tech roles.",
       image: "/codingspoon.png"
     },
     {
@@ -26,15 +26,15 @@ const Certifications = () => {
       title: "Data Structures & Algorithms",
       description: "Completed comprehensive 'Data Structures & Algorithms' program with hands-on projects.",
       organization: "Programming Pathshala",
-      organizationDesc: "Ed-tech with modular CS courses & real-world assignments.",
+      organizationDesc: "Programming Pathshala is a leading ed-tech platform offering modular computer science courses designed with industry relevance in mind. It emphasizes conceptual clarity, real-world assignments, and interview-focused learning, making it ideal for aspiring software engineers preparing for tech placements and coding interviews.",
       image: "/programmingpathshala.png"
     },
     {
       id: 4,
       title: "HP Power Lab Round 2",
-      description: "Submitted prototype in Round 2 of HP Power Lab as Team 'sinha.khushi403.'",
+      description: "Selected for Round 2 of HP Power Lab as part of a team, where we submitted a prototype showcasing innovative solutions for advanced technology challenges.",
       organization: "HPCL",
-      organizationDesc: "HP's innovation lab fostering breakthrough tech challenges.",
+      organizationDesc: "HPCL’s innovation lab is at the forefront of fostering breakthrough technological solutions. The lab focuses on solving complex tech challenges across various industries, driving digital transformation, and creating innovative, sustainable solutions that align with global standards. ",
       image: "/hppowerlab.png"
     },
     {
@@ -42,7 +42,7 @@ const Certifications = () => {
       title: "Infineon Hackathon",
       description: "Participated in 'Defend The Kingdom' hackathon by Infineon at LPU.",
       organization: "Infineon",
-      organizationDesc: "Global semiconductor leader empowering future tech via hackathons.",
+      organizationDesc: "Infineon is a global leader in semiconductor solutions, playing a key role in shaping the future of automotive, industrial, energy-efficient, and consumer electronics sectors. The company is deeply invested in fostering innovation through initiatives like hackathons, where talented engineers collaborate to solve complex challenges and create cutting-edge technologies. Infineon’s products and solutions drive digital transformation, enhance sustainability, and enable smart mobility, positioning the company at the forefront of powering the future of technology.",
       image: "/infineon.png"
     }
   ];
