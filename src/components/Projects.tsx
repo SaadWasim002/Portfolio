@@ -1,5 +1,5 @@
-
-import { Code, Database, BookOpen, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Code2, Server, Library, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,105 +17,161 @@ const Projects = () => {
       id: 1,
       title: "Discourse",
       description: "A modern full-stack chat application featuring text, audio, and video calls, with dynamic features like attachments, message management, and an invite system. Built with secure authentication and dark mode support.",
-      image: "/placeholder.svg",
-      link: "https://github.com/yourusername/discourse",
+      image: "/discourse.png",
+      link: "https://github.com/SaadWasim002/Discourse",
       stack: [
-        { name: "React", icon: Code },
-        { name: "Prisma", icon: Database },
-        { name: "Tailwind", icon: Code }
-      ]
+        { name: "React", icon: Code2 },
+        { name: "Prisma", icon: Server },
+        { name: "Tailwind", icon: Library },
+      ],
     },
     {
       id: 2,
       title: "ExpenseSync",
       description: "A web-based daily expense tracking system that helps users manage and track their expenditures efficiently. Features automated calculations and per-user expense tracking with detailed insights.",
-      image: "/placeholder.svg",
-      link: "https://github.com/yourusername/expensesync",
-      stack: [{ name: "PHP", icon: Code }]
+      image: "/expensesync.png",
+      link: "https://github.com/SaadWasim002/expensesync",
+      stack: [{ name: "PHP", icon: Code2 }],
     },
     {
       id: 3,
       title: "Doorstep Delight",
       description: "A full-stack food delivery platform with real-time cart functionality and secure user authentication. Features responsive design and efficient database management.",
-      image: "/placeholder.svg",
-      link: "https://github.com/yourusername/doorstep-delight",
+      image: "/doorstep.png",
+      link: "https://github.com/SaadWasim002/Doorstep-Delight",
       stack: [
-        { name: "Node.js", icon: Database },
-        { name: "JavaScript", icon: Code },
-        { name: "MongoDB", icon: Database }
-      ]
+        { name: "Node.js", icon: Server },
+        { name: "JavaScript", icon: Code2 },
+        { name: "MongoDB", icon: Server },
+      ],
     },
     {
       id: 4,
       title: "Password Generator",
       description: "A React-based password generator tool that creates secure and customizable passwords.",
-      image: "/placeholder.svg",
-      link: "https://github.com/yourusername/password-generator",
-      stack: [{ name: "React", icon: Code }]
-    }
+      image: "/passwordGen.png",
+      link: "https://github.com/SaadWasim002/Password-Generator",
+      stack: [{ name: "React", icon: Code2 }],
+    },
   ];
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
 
   return (
     <section id="projects" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 animate-fade-in">Projects</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <Card 
-              key={project.id}
-              className="group hover:shadow-xl transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
-                <div className="flex gap-2 mt-2">
-                  {project.stack.map((tech, i) => (
-                    <Badge key={i} variant="secondary" className="flex items-center gap-1">
-                      <tech.icon className="w-4 h-4" />
-                      {tech.name}
-                    </Badge>
-                  ))}
-                </div>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-sm text-gray-600">
-                  {project.description}
-                </CardDescription>
-              </CardContent>
-              <CardFooter>
-                <a 
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full"
+        <motion.h2 
+          className="text-3xl font-bold text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Projects
+        </motion.h2>
+
+        <motion.div
+          className="grid md:grid-cols-2 gap-8"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {projects.map((project) => (
+            <motion.div key={project.id} variants={item}>
+              <Card className="group">
+                <motion.div 
+                  className="h-48 flex items-center justify-center bg-white"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <Button variant="outline" className="w-full group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                    View Project
-                  </Button>
-                </a>
-              </CardFooter>
-            </Card>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="max-h-full w-auto object-contain"
+                  />
+                </motion.div>
+                
+                <CardHeader>
+                  <CardTitle className="text-xl font-semibold">
+                    {project.title}
+                  </CardTitle>
+                  <div className="flex gap-2 mt-2 flex-wrap">
+                    {project.stack.map((tech, i) => (
+                      <motion.div
+                        key={i}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <Badge
+                          variant="secondary"
+                          className="flex items-center gap-1"
+                        >
+                          <tech.icon className="w-4 h-4" />
+                          {tech.name}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </div>
+                </CardHeader>
+                
+                <CardContent>
+                  <CardDescription className="text-sm text-gray-600">
+                    {project.description}
+                  </CardDescription>
+                </CardContent>
+                
+                <CardFooter>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-full">
+                    <Button 
+                      variant="outline" 
+                      className="w-full group-hover:bg-purple-600 group-hover:text-white transition-colors"
+                    >
+                      View Project
+                    </Button>
+                  </a>
+                </CardFooter>
+              </Card>
+            </motion.div>
           ))}
-        </div>
-        <div className="text-center mt-12">
-          <a 
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="default" size="lg" className="animate-fade-in flex items-center gap-2">
+        </motion.div>
+
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          <a href="https://github.com/SaadWasim002" target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="default"
+              size="lg"
+              className="flex items-center gap-2"
+            >
               View More Projects
               <ArrowRight className="w-4 h-4" />
             </Button>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

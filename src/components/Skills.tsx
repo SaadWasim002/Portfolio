@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 
 const skills = [
   { name: 'HTML5', icon: 'devicon-html5-plain' },
@@ -23,25 +24,93 @@ const skills = [
 ];
 
 const Skills = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        when: "beforeChildren"
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    },
+    hover: {
+      y: -5,
+      scale: 1.05,
+      transition: { type: "spring", stiffness: 300 }
+    }
+  };
+
+  const iconVariants = {
+    hover: {
+      color: "#9333ea",
+      scale: 1.2,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  const textVariants = {
+    hover: {
+      color: "#9333ea",
+      transition: { duration: 0.3 }
+    }
+  };
+
   return (
     <section id="skills" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">Skills</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <motion.h2 
+          className="text-3xl font-bold text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Skills
+        </motion.h2>
+        
+        <motion.div 
+          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {skills.map((skill) => (
-            <div
+            <motion.div
               key={skill.name}
-              className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+              variants={itemVariants}
+              whileHover="hover"
+              className="bg-white p-6 rounded-lg shadow-sm"
             >
               <div className="flex flex-col items-center space-y-3">
-                <i className={`${skill.icon} text-4xl text-gray-700 group-hover:text-purple-600 transition-colors`} />
-                <span className="text-sm font-medium text-gray-600 group-hover:text-purple-600 transition-colors">
+                <motion.i 
+                  className={`${skill.icon} text-4xl text-gray-700`}
+                  variants={iconVariants}
+                  whileHover="hover"
+                />
+                <motion.span 
+                  className="text-sm font-medium text-gray-600"
+                  variants={textVariants}
+                  whileHover="hover"
+                >
                   {skill.name}
-                </span>
+                </motion.span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

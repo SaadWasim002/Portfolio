@@ -64,7 +64,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }: NavbarProps) => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white/90 backdrop-blur-md shadow-lg py-4">
             <div className="flex flex-col space-y-4 px-6">
-              {['about', 'skills', 'career', 'certifications', 'projects', 'contact'].map((item) => (
+              {['about', 'skills', 'career', 'projects' , 'certifications', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}

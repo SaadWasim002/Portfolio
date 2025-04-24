@@ -1,81 +1,124 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Certifications = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const certifications = [
     {
       id: 1,
       title: "CodeFest'25 Prelims — Rank 845",
       description: "Secured rank 845 in the CodeFest'25 Prelims, demonstrating outstanding problem-solving skills and technical proficiency.",
       organization: "IICPC",
-      organizationDesc: "The Intercollegiate Informatic & Competitive Programming Camp (IICPC Pvt. Ltd.) runs CodeFest—India's premier contest on algorithms, data structures & optimization.",
-      image: "/placeholder.svg"
+      organizationDesc: "Runs CodeFest—India's premier contest on algorithms, data structures & optimization.",
+      image: "/iicpc.png"
     },
     {
       id: 2,
       title: "Competitive Programming – DSA Training",
-      description: "Completed 'Competitive Programming – Data Structures & Algorithms' training (10 Jan 2025–20 Feb 2025), mastering algorithm optimization, complexity analysis & problem solving.",
+      description: "Completed 'Competitive Programming – DSA' training, mastering algorithm optimization & complexity analysis.",
       organization: "Coding Spoon",
-      organizationDesc: "A top coding bootcamp offering interactive DSA masterclasses, mock contests & mentor-led sessions to ace technical interviews.",
-      image: "/placeholder.svg"
+      organizationDesc: "Top bootcamp offering DSA masterclasses & mock contests.",
+      image: "/codingspoon.png"
     },
     {
       id: 3,
       title: "Data Structures & Algorithms",
-      description: "Completed the 'Data Structures and Algorithms' program—hands-on projects & theory to become an excellent software engineer.",
+      description: "Completed comprehensive 'Data Structures & Algorithms' program with hands-on projects.",
       organization: "Programming Pathshala",
-      organizationDesc: "An ed-tech initiative delivering modular CS courses with video lectures, quizzes & real-world assignments.",
-      image: "/placeholder.svg"
+      organizationDesc: "Ed-tech with modular CS courses & real-world assignments.",
+      image: "/programmingpathshala.png"
     },
     {
       id: 4,
-      title: "HP Power Lab Round 2 Participant",
-      description: "Participated in Round 2: Executive Summary & Prototype Submission of HP Power Lab as Team 'sinha.khushi403.'",
+      title: "HP Power Lab Round 2",
+      description: "Submitted prototype in Round 2 of HP Power Lab as Team 'sinha.khushi403.'",
       organization: "HPCL",
-      organizationDesc: "Hindustan Petroleum Corporation Ltd. is a leading downstream oil company fostering innovation via its Power Lab challenges.",
-      image: "/placeholder.svg"
+      organizationDesc: "HP's innovation lab fostering breakthrough tech challenges.",
+      image: "/hppowerlab.png"
     },
     {
       id: 5,
-      title: "Infineon Hackathon Participant",
-      description: "Took part in Infineon Technologies' 'Defend The Kingdom' hackathon at LPU on 9–10 Feb 2025.",
+      title: "Infineon Hackathon",
+      description: "Participated in 'Defend The Kingdom' hackathon by Infineon at LPU.",
       organization: "Infineon",
-      organizationDesc: "A global semiconductor leader powering automotive, industrial & security solutions; known for its innovative developer hackathons.",
-      image: "/placeholder.svg"
+      organizationDesc: "Global semiconductor leader empowering future tech via hackathons.",
+      image: "/infineon.png"
     }
   ];
 
   return (
-    <section id="certifications" className="py-20">
+    <section id="certifications" className="py-20 relative bg-gray-50">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">Certifications</h2>
-        <div className="space-y-8">
-          {certifications.map((cert) => (
-            <div 
+        <motion.h2
+          className="text-4xl font-extrabold text-center mb-16"
+          initial={{ opacity: 0, y: -40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          Certifications
+        </motion.h2>
+
+        <div className="space-y-10">
+          {certifications.map((cert, index) => (
+            <motion.div
               key={cert.id}
-              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col md:flex-row gap-6"
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row gap-6"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
             >
               <div className="md:w-1/4 flex-shrink-0">
-                <img 
-                  src={cert.image} 
-                  alt={cert.title} 
-                  className="w-full h-auto rounded-md object-cover"
+                <img
+                  src={cert.image}
+                  alt={cert.title}
+                  className="w-full h-auto rounded-md cursor-pointer hover:scale-105 transition-transform duration-300 shadow"
+                  onClick={() => setSelectedImage(cert.image)}
                 />
               </div>
               <div className="md:w-3/4">
-                <h3 className="text-xl font-semibold mb-3">{cert.title}</h3>
-                <p className="text-gray-700 mb-4">
-                  {cert.description}
-                </p>
-                <div className="bg-gray-50 p-4 rounded-md">
+                <h3 className="text-xl font-bold mb-2 text-blue-800">{cert.title}</h3>
+                <p className="text-gray-700 mb-3">{cert.description}</p>
+                <div className="bg-blue-50 p-4 rounded-md border-l-4 border-blue-400">
                   <p className="text-sm">
                     <strong>About {cert.organization}:</strong><br />
                     {cert.organizationDesc}
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Modal with animation */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+            onClick={() => setSelectedImage(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="max-w-3xl w-full p-4"
+              initial={{ scale: 0.6 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.6 }}
+              transition={{ type: "spring", stiffness: 100 }}
+            >
+              <img
+                src={selectedImage}
+                alt="Certification Zoom"
+                className="w-full h-auto rounded-lg shadow-2xl border-4 border-white"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
